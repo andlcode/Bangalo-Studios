@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { GlobalStyle } from "./styles/GlobalStyle";
+import { GlobalStyle } from "./Styles/GlobalStyle";
 import SiteHeader from "./Components/SiteHeader";
 import BookingForm from "./BookingForm";
 
