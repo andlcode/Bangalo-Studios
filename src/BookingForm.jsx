@@ -29,7 +29,6 @@ const Lead = styled.p`
   margin-bottom: 34px;
 `;
 
-/* ====== Grid ====== */
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -38,10 +37,10 @@ const Grid = styled.div`
 `;
 
 const Field = styled.div`
-  display: grid;
   gap: 8px;
+  margin-bottom: 20px;
+  min-height: 100px; /* força mesma altura entre Celular e E-mail */
 `;
-
 const Label = styled.label`
   font-weight: 600;
   color: var(--ink);
@@ -166,11 +165,12 @@ const CustomDateInput = React.forwardRef(
 );
 
 const Help = styled.span`
-  font-size: var(--fs-3);
-    margin: 0;                
+  font-size: 1rem;
+  margin: 0;
   line-height: 1.2;
   color: ${p => p.error ? "var(--danger)" : "var(--muted)"};
 `;
+
 
 const SlotsCol = styled.div`
   display: grid;
@@ -373,23 +373,24 @@ Segue meus dados:
       </Field>
 
       <Grid>
-        <Field>
-          <Label htmlFor="telefone">Celular</Label>
-          <Input
-            id="telefone"
-            name="telefone"
-            inputMode="tel"
-            placeholder="(11) 9 9999-9999"
-            value={form.telefone}
-            onChange={(e) => setForm((f) => ({ ...f, telefone: maskPhone(e.target.value) }))}
-            onBlur={blur}
-            $invalid={t.telefone && !!errs.telefone}
-            autoComplete="tel"
-            required
-          />
-          {t.telefone && <Help error={!!errs.telefone}>{errs.telefone || " "}</Help>}
-          <Help>Inclua o DDD. Ex.: (21) 9 8888-7777</Help>
-        </Field>
+       <Field>
+  <Label htmlFor="telefone">Celular</Label>
+  <Input
+    id="telefone"
+    name="telefone"
+    inputMode="tel"
+    placeholder="(11) 9 9999-9999"
+    value={form.telefone}
+    onChange={(e) => setForm((f) => ({ ...f, telefone: maskPhone(e.target.value) }))}
+    onBlur={blur}
+    $invalid={t.telefone && !!errs.telefone}
+    autoComplete="tel"
+    required
+  />
+  {t.telefone && <Help error={!!errs.telefone}>{errs.telefone || " "}</Help>}
+  <Help>Inclua o DDD. Ex.: (21) 9 8888-7777</Help> {/* fica compacto */}
+</Field>
+
 
         <Field>
           <Label htmlFor="email">E-mail</Label>
